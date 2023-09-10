@@ -4,4 +4,4 @@
 
 ### Guia das Branchs:
 - Main: possui o conceito básico de REST API. (PathVariables, RequestParams e Excessão Customizada)
-- EX_injecao_dependencia: Explorando novos métodos do REST. (Injeção de Dependencia)
+- EX_injecao_dependencia: Explorando novos métodos do REST. (Injeção de Dependencia, CRUD e ResposeStatus)
