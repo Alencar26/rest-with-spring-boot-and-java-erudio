@@ -5,3 +5,5 @@
 - Registro de Log quando ocorre uma requisição.
 - Retornando uma lista de Pessoas em JSON.
 - Trabalhando com mocks
+- CRUD c/ REST API
+- ResponseStatus - para escolher o status de retorno

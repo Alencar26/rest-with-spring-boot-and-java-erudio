@@ -17,6 +17,20 @@ public class PersonServices {
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
 
+    public Person create(Person person) {
+        logger.info("Create One Person.");
+        return person;
+    }
+
+    public Person update(Person person) {
+        logger.info("Update Person.");
+        return person;
+    }
+
+    public void delete(String id) {
+        logger.info("Delete Person.");
+    }
+
     public List<Person> findAll() {
         logger.info("Finding all peaple");
         List<Person> persons = new ArrayList<Person>();
