@@ -35,6 +35,50 @@ public class GreetingController {
 		return convertToDouble(numberOne) + convertToDouble(numberTwo);
 	}
 
+	@RequestMapping(value ="/sub/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+	public Double sub(	@PathVariable(value = "numberOne") String numberOne,
+						@PathVariable(value = "numberTwo") String numberTwo) throws Exception {
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Por favor, informe um valor numérico.");
+		}
+		return convertToDouble(numberOne) - convertToDouble(numberTwo);
+	}
+
+	@RequestMapping(value ="/mult/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+	public Double mult(	@PathVariable(value = "numberOne") String numberOne,
+						@PathVariable(value = "numberTwo") String numberTwo) throws Exception {
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Por favor, informe um valor numérico.");
+		}
+		return convertToDouble(numberOne) * convertToDouble(numberTwo);
+	}
+
+	@RequestMapping(value ="/div/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+	public Double div(	@PathVariable(value = "numberOne") String numberOne,
+						@PathVariable(value = "numberTwo") String numberTwo) throws Exception {
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Por favor, informe um valor numérico.");
+		}
+		return convertToDouble(numberOne) / convertToDouble(numberTwo);
+	}
+
+	@RequestMapping(value ="/media/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+	public Double media(	@PathVariable(value = "numberOne") String numberOne,
+						@PathVariable(value = "numberTwo") String numberTwo) throws Exception {
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Por favor, informe um valor numérico.");
+		}
+		return (convertToDouble(numberOne) + convertToDouble(numberTwo)) / 2;
+	}
+
+	@RequestMapping(value ="/raiz/{numberOne}", method = RequestMethod.GET)
+	public Double raiz(	@PathVariable(value = "numberOne") String numberOne) throws Exception {
+		if (!isNumeric(numberOne)) {
+			throw new UnsupportedMathOperationException("Por favor, informe um valor numérico.");
+		}
+		return Math.sqrt(convertToDouble(numberOne));
+	}
+
 	private Double convertToDouble(String strNumber) {
 		if (strNumber == null) return Double.NaN; //TODO: retornar exception custom
 		//método deverá aceitar os seguntes formatos: BR 10,32 ou US 10.32
