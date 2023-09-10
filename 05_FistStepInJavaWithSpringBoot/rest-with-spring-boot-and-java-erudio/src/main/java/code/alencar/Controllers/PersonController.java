@@ -3,6 +3,8 @@ package code.alencar.Controllers;
 import code.alencar.Services.PersonServices;
 import code.alencar.model.Person;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,5 +26,13 @@ public class PersonController {
 	)
 	public Person findById(	@PathVariable(value = "id") String id) throws Exception {
 		return services.findById(id);
+	}
+
+	@RequestMapping(
+		method = RequestMethod.GET, 
+		produces = MediaType.APPLICATION_JSON_VALUE
+	)
+	public List<Person> findAll() {
+		return services.findAll();
 	}
 }
