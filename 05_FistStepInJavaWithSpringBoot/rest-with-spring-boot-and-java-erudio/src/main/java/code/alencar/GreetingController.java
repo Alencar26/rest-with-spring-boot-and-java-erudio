@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import code.alencar.exceptions.UnsupportedMathOperationException;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
@@ -27,7 +30,7 @@ public class GreetingController {
 	public Double sum(	@PathVariable(value = "numberOne") String numberOne,
 						@PathVariable(value = "numberTwo") String numberTwo) throws Exception {
 		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
-			throw new Exception("Não é permitido passar valores não numéricos. Verifique os valores informados na URL");
+			throw new UnsupportedMathOperationException("Por favor, informe um valor numérico.");
 		} 
 		return convertToDouble(numberOne) + convertToDouble(numberTwo);
 	}
