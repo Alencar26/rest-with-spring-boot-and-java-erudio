@@ -4,3 +4,4 @@
 - Injeção de Dependencias (@Service e @Autowired)
 - Registro de Log quando ocorre uma requisição.
 - Retornando uma lista de Pessoas em JSON.
+- Trabalhando com mocks
