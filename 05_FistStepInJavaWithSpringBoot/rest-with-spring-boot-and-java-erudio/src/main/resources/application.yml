@@ -1,1 +1,14 @@
-
+spring:
+    datasource:
+        dbcp2:
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            url: ${DATABASE_URL}
+            username: ${DATABASE_USERNAME}
+            password: ${DATABASE_PASSWD}
+    jpa:
+        hibernate:
+            ddl-auto: update #valide essas informações na internet. (em produção use "none")
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+            show-sql: false #só use "true" quando for debugar aplicação.
