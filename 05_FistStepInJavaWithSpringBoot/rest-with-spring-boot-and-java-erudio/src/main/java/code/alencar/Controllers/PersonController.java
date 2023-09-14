@@ -8,11 +8,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
@@ -22,41 +26,36 @@ public class PersonController {
 	@Autowired //usado para o SpringBoot injetar a classe sem usar o "new"
 	private PersonServices services;
 
-	@RequestMapping(
-		method = RequestMethod.POST, 
+	@PostMapping(
 		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
 		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
 	public Person create(@RequestBody Person person) throws Exception {
 		return services.create(person);
 	}
 	
-	@RequestMapping(
-		method = RequestMethod.PUT, 
+	@PutMapping(
 		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
 		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
-	public Person update(@RequestBody Person person) throws Exception {
-		return services.update(person);
+	public ResponseEntity<Person> update(@RequestBody Person person) throws Exception {
+		return ResponseEntity.status(HttpStatus.OK).body(services.update(person));
 	}
 	
-	@RequestMapping(
-		value ="/{id}", 
-		method = RequestMethod.GET, 
+	@GetMapping(
+		value ="/{id}",
 		produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person findById(	@PathVariable(value = "id") Long id) throws Exception {
-		return services.findById(id);
+	public ResponseEntity<Person> findById(	@PathVariable(value = "id") Long id) throws Exception {
+		return ResponseEntity.ok(services.findById(id));
 	}
 
-	@RequestMapping(
-		method = RequestMethod.GET, 
+	@GetMapping(
 		produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> findAll() {
 		return services.findAll();
 	}
 	
 	@ResponseStatus(value = HttpStatus.NO_CONTENT) //204
-	@RequestMapping(
-		value ="/{id}", 
-		method = RequestMethod.DELETE)
+	@DeleteMapping(
+		value ="/{id}")
 	public void delete(	@PathVariable(value = "id") Long id) throws Exception {
 		services.delete(id);
 	}
