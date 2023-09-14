@@ -6,8 +6,8 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import code.alencar.data.vo.v1.PersonVO;
 import code.alencar.exceptions.ResourceNotFoundException;
-import code.alencar.model.Person;
 import code.alencar.repositories.PersonRepository;
 
 //com anotation @service eu nao preciso instanciar  a classe mualmente o Spring Faz isso por mim. 
@@ -19,14 +19,14 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
-    public Person create(Person person) {
+    public PersonVO create(PersonVO person) {
         logger.info("Create One Person.");
         return repository.save(person);
     }
 
-    public Person update(Person person) {
+    public PersonVO update(PersonVO person) {
         logger.info("Update Person.");
-        Person entity = repository.findById(person.getId()).orElseThrow(
+        PersonVO entity = repository.findById(person.getId()).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
         
         entity.setFirstName(person.getFirstName());
@@ -39,17 +39,17 @@ public class PersonServices {
 
     public void delete(Long id) {
         logger.info("Delete Person.");
-        Person entity = repository.findById(id).orElseThrow(
+        PersonVO entity = repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
         repository.delete(entity);
     }
 
-    public List<Person> findAll() {
+    public List<PersonVO> findAll() {
         logger.info("Finding all peaple");
         return repository.findAll();
     }
 
-    public Person findById(Long id) {
+    public PersonVO findById(Long id) {
         logger.info("Finding one person!");
         return repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));

@@ -1,7 +1,7 @@
 package code.alencar.Controllers;
 
 import code.alencar.Services.PersonServices;
-import code.alencar.model.Person;
+import code.alencar.data.vo.v1.PersonVO;
 
 import java.util.List;
 
@@ -29,27 +29,27 @@ public class PersonController {
 	@PostMapping(
 		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
 		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
-	public Person create(@RequestBody Person person) throws Exception {
+	public PersonVO create(@RequestBody PersonVO person) throws Exception {
 		return services.create(person);
 	}
 	
 	@PutMapping(
 		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
 		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
-	public ResponseEntity<Person> update(@RequestBody Person person) throws Exception {
+	public ResponseEntity<PersonVO> update(@RequestBody PersonVO person) throws Exception {
 		return ResponseEntity.status(HttpStatus.OK).body(services.update(person));
 	}
 	
 	@GetMapping(
 		value ="/{id}",
 		produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Person> findById(	@PathVariable(value = "id") Long id) throws Exception {
+	public ResponseEntity<PersonVO> findById(	@PathVariable(value = "id") Long id) throws Exception {
 		return ResponseEntity.ok(services.findById(id));
 	}
 
 	@GetMapping(
 		produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> findAll() {
+	public List<PersonVO> findAll() {
 		return services.findAll();
 	}
 	

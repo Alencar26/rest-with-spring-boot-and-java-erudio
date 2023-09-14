@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>20</java.version>
+		<dover-version>6.4.0</dover-version>
 	</properties>
 	<dependencies>
 
@@ -39,6 +40,13 @@
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!--DEPENDENCIA DO DOZER - BAIND DE OBJETO PARA OBJETO-->
+		<dependency>
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>${dover-version}</version>
 		</dependency>
 
 		<dependency>
