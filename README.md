@@ -14,3 +14,7 @@
     - Utilização de Mapper para converter uma classe em outra
     - Dozer Mapper
     - Testes Unitários
+- **featuure/versionamento_endpont**
+    - Criação de nova versão para a rota de  criação
+    - Mapper Customizado
+    - Refatoração do código para suportar nova versão.
