@@ -1,8 +1,8 @@
 # Projeto REST API c/ SpringBoot | Java | AWS
 
-### Note que o repositório possui várias Branchs para navegar pelas fases de aprendizado.
+### Note que o repositório possui várias Branches para navegar pelas fases de aprendizado.
 
-### Guia das Branchs:
+## Menu Branches:
 - **[Main](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/main/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)**: possui o conceito básico de REST API. (PathVariables, RequestParams e Excessão Customizada)
 - **[EX_injecao_dependencia](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/Ex_injecao_dependencia/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)**: 
     -   Explorando novos métodos do REST. (Injeção de Dependencia, CRUD e ResposeStatus)
