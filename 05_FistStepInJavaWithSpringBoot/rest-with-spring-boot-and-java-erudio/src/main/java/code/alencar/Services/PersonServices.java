@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import code.alencar.data.vo.v1.PersonVO;
+import code.alencar.data.vo.v2.PersonVOV2;
 import code.alencar.exceptions.ResourceNotFoundException;
 import code.alencar.mapper.DozerMapper;
+import code.alencar.mapper.custom.PersonMapper;
 import code.alencar.model.Person;
 import code.alencar.repositories.PersonRepository;
 
@@ -21,10 +23,21 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
+    @Autowired
+    PersonMapper mapper;
+
     public PersonVO create(PersonVO personVO) {
         logger.info("Create One Person.");
         Person person = DozerMapper.parseObject(personVO, Person.class);
         PersonVO vo = DozerMapper.parseObject(repository.save(person), PersonVO.class);
+        return vo;
+    }
+
+    //versionamento de rota
+    public PersonVOV2 createV2(PersonVOV2 personVO) {
+        logger.info("Create One Person. V2");
+        Person person = mapper.convertVoToEntity(personVO);
+        PersonVOV2 vo = mapper.convertEntityToVO(repository.save(person));
         return vo;
     }
 

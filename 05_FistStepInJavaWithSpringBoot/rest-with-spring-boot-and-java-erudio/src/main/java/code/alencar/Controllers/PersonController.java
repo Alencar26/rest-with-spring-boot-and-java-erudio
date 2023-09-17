@@ -2,6 +2,7 @@ package code.alencar.Controllers;
 
 import code.alencar.Services.PersonServices;
 import code.alencar.data.vo.v1.PersonVO;
+import code.alencar.data.vo.v2.PersonVOV2;
 
 import java.util.List;
 
@@ -31,6 +32,14 @@ public class PersonController {
 		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
 	public PersonVO create(@RequestBody PersonVO person) throws Exception {
 		return services.create(person);
+	}
+
+	@PostMapping(
+		value = "/v2",
+		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
+		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
+	public PersonVOV2 createV2(@RequestBody PersonVOV2 person) throws Exception {
+		return services.createV2(person);
 	}
 	
 	@PutMapping(

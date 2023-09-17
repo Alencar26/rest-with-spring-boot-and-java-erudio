@@ -1,7 +1,6 @@
-# Padrão de Projeto Value Object (VO) - Aplicada na API.
+# Versionamento de Endpoint
 
 ### Nessa API nós conseguimos velidar os seguintes conceitos:
-- Implementação do padrão de projeto Value Objetc (VO)
-- Importação do Dozer - Faz o mapper de um objeto para outro.
-- Implementação de testes unitários
-- Refatoração da Classe Service para utillizar o Mapper na operações.
+- Criação de nova versão para rota de create;
+- Mapper Custom para suportar a mudança;
+- Refatoração do código para a nova versão.
