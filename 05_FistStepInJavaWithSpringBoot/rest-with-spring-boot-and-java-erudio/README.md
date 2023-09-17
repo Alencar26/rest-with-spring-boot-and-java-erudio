@@ -4,3 +4,4 @@
 - Implementação do padrão de projeto Value Objetc (VO)
 - Importação do Dozer - Faz o mapper de um objeto para outro.
 - Implementação de testes unitários
+- Refatoração da Classe Service para utillizar o Mapper na operações.
