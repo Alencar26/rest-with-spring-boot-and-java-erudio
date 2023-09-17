@@ -6,6 +6,11 @@
 - **Main**: possui o conceito básico de REST API. (PathVariables, RequestParams e Excessão Customizada)
 - **EX_injecao_dependencia**: 
     -   Explorando novos métodos do REST. (Injeção de Dependencia, CRUD e ResposeStatus)
-    - **CRUD completo com interaçãocom base de dados na AWS**
+    - **CRUD completo com interação com base de dados na AWS**
     - Conceitors de repository do JPA
     - Refatoração para código mais legível
+- **PadraoProjetoValueObject**
+    - Implementação do padrão de projeto Value Object (VO)
+    - Utilização de Mapper para converter uma classe em outra
+    - Dozer Mapper
+    - Testes Unitários
