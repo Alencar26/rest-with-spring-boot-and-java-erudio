@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import code.alencar.data.vo.v1.PersonVO;
 import code.alencar.exceptions.ResourceNotFoundException;
+import code.alencar.mapper.DozerMapper;
+import code.alencar.model.Person;
 import code.alencar.repositories.PersonRepository;
 
 //com anotation @service eu nao preciso instanciar  a classe mualmente o Spring Faz isso por mim. 
@@ -19,14 +21,16 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
-    public PersonVO create(PersonVO person) {
+    public PersonVO create(PersonVO personVO) {
         logger.info("Create One Person.");
-        return repository.save(person);
+        Person person = DozerMapper.parseObject(personVO, Person.class);
+        PersonVO vo = DozerMapper.parseObject(repository.save(person), PersonVO.class);
+        return vo;
     }
 
     public PersonVO update(PersonVO person) {
         logger.info("Update Person.");
-        PersonVO entity = repository.findById(person.getId()).orElseThrow(
+        Person entity = repository.findById(person.getId()).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
         
         entity.setFirstName(person.getFirstName());
@@ -34,24 +38,26 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
         
-        return repository.save(person);
+        return DozerMapper.parseObject(repository.save(entity), PersonVO.class);
     }
 
     public void delete(Long id) {
         logger.info("Delete Person.");
-        PersonVO entity = repository.findById(id).orElseThrow(
+        Person entity = repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
         repository.delete(entity);
     }
 
     public List<PersonVO> findAll() {
         logger.info("Finding all peaple");
-        return repository.findAll();
+        //no retorno já estamos fazendo a converção da classe Person para PersonVO
+        return DozerMapper.parseListObject(repository.findAll(), PersonVO.class);
     }
 
     public PersonVO findById(Long id) {
         logger.info("Finding one person!");
-        return repository.findById(id).orElseThrow(
+        Person personEntity = repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
+        return DozerMapper.parseObject(personEntity, PersonVO.class);
     }
 }
