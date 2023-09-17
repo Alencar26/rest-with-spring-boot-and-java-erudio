@@ -1,4 +1,4 @@
-# Injeção de Dependencias e demais verbos do REST
+# Padrão de Projeto Value Object (VO) - Aplicada na API.
 
 ### Nessa API nós conseguimos velidar os seguintes conceitos:
 - Implementação do padrão de projeto Value Objetc (VO)
