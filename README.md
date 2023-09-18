@@ -18,3 +18,7 @@
     - Criação de nova versão para a rota de  criação
     - Mapper Customizado
     - Refatoração do código para suportar nova versão.
+- **[frature/migrations_com_flyway](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/frature/migrations_com_flyway/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)**
+    - Implementação de migration para gerenciar a base de dados;
+    - Add dependência necessárias;
+    - Novo endpoint com versionamento.
