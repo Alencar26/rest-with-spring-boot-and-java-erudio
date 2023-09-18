@@ -22,3 +22,7 @@
     - Implementação de migration para gerenciar a base de dados;
     - Add dependência necessárias;
     - Novo endpoint com versionamento.
+- **[feature/Custom_Json_Serialization](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/feature/Custom_Json_Serialization/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)**
+    - Ordenação dos campos no JSON da API;
+    - Alteração do nome de exibição de um campo no json;
+    - Ignorar determinado campo para não ser exibido no Json.
