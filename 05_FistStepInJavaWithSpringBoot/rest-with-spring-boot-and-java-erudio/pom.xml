@@ -42,6 +42,18 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!--DEPENDENCIA DO FLTWAY - migrations do banco de dados-->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
+		<!--FLAYWAY PARA MYSQL-->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+		</dependency>
+
 		<!--DEPENDENCIA DO DOZER - BAIND DE OBJETO PARA OBJETO-->
 		<dependency>
 			<groupId>com.github.dozermapper</groupId>

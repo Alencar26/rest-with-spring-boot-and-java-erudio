@@ -6,7 +6,7 @@ spring:
         password: ${DATABASE_PASSWD}
     jpa:
         hibernate:
-            ddl-auto: update #valide essas informações na internet. (em produção use "none")
+            ddl-auto: none #Deixar como "update" significa que hibernate pode alterar a estrutura do banco. (deixar none)
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL8Dialect
