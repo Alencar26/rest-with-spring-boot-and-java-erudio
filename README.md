@@ -29,3 +29,4 @@
 - **[feature/Content_Negotiation](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/feature/Content_Negotiation/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)**
     - Suporte a XML e YAML
     - Controle via QueryParam
+    - Controle via HeaderParam
