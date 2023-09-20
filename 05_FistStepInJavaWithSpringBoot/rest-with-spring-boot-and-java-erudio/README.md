@@ -4,3 +4,4 @@
 - Suporte a XML
 - Suporte a yaml
 - Cntrole de extenção via QueryParam e anotation @Configuration
+- Controle via HeaderParam - URL mais limpa.
