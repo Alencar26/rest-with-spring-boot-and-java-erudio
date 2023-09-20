@@ -27,28 +27,28 @@ public class PersonController {
 	private PersonServices services;
 
 	@PostMapping(
-		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
-		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
+		consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, //consome JSON e XML
+		produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}) //consome JSON e XML
 	public PersonVO create(@RequestBody PersonVO person) throws Exception {
 		return services.create(person);
 	}
 	
 	@PutMapping(
-		consumes = MediaType.APPLICATION_JSON_VALUE, //consome JSON
-		produces = MediaType.APPLICATION_JSON_VALUE) //produz JSON
+		consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, //consome JSON e XML
+		produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}) //consome JSON e XML
 	public ResponseEntity<PersonVO> update(@RequestBody PersonVO person) throws Exception {
 		return ResponseEntity.status(HttpStatus.OK).body(services.update(person));
 	}
 	
 	@GetMapping(
 		value ="/{id}",
-		produces = MediaType.APPLICATION_JSON_VALUE)
+		produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<PersonVO> findById(	@PathVariable(value = "id") Long id) throws Exception {
 		return ResponseEntity.ok(services.findById(id));
 	}
 
 	@GetMapping(
-		produces = MediaType.APPLICATION_JSON_VALUE)
+		produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public List<PersonVO> findAll() {
 		return services.findAll();
 	}
