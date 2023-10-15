@@ -6,11 +6,15 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import code.alencar.Controllers.PersonController;
 import code.alencar.data.vo.v1.PersonVO;
 import code.alencar.exceptions.ResourceNotFoundException;
 import code.alencar.mapper.DozerMapper;
 import code.alencar.model.Person;
 import code.alencar.repositories.PersonRepository;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;;
 
 //com anotation @service eu nao preciso instanciar  a classe mualmente o Spring Faz isso por mim. 
 @Service //SpringBoot entende que essa classe vai ser injetada em outras classes em tempo de execução.
@@ -30,7 +34,7 @@ public class PersonServices {
 
     public PersonVO update(PersonVO person) {
         logger.info("Update Person.");
-        Person entity = repository.findById(person.getId()).orElseThrow(
+        Person entity = repository.findById(person.getKey()).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
         
         entity.setFirstName(person.getFirstName());
@@ -54,10 +58,12 @@ public class PersonServices {
         return DozerMapper.parseListObject(repository.findAll(), PersonVO.class);
     }
 
-    public PersonVO findById(Long id) {
+    public PersonVO findById(Long id) throws Exception {
         logger.info("Finding one person!");
         Person personEntity = repository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
-        return DozerMapper.parseObject(personEntity, PersonVO.class);
+        PersonVO vo = DozerMapper.parseObject(personEntity, PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
+        return vo;
     }
 }

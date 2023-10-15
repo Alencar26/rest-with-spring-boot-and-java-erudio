@@ -29,6 +29,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!--HATEOAS-->
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+		</dependency>
+
 		<!--DEPENDENCIA DO SPRING PARA ACESSAR BANCO DE DADOS-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
