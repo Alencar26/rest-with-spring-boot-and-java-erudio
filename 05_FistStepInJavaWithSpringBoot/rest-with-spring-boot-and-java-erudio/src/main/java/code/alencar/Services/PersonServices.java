@@ -25,14 +25,15 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
-    public PersonVO create(PersonVO personVO) {
+    public PersonVO create(PersonVO personVO) throws Exception {
         logger.info("Create One Person.");
         Person person = DozerMapper.parseObject(personVO, Person.class);
         PersonVO vo = DozerMapper.parseObject(repository.save(person), PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
         return vo;
     }
 
-    public PersonVO update(PersonVO person) {
+    public PersonVO update(PersonVO person) throws Exception {
         logger.info("Update Person.");
         Person entity = repository.findById(person.getKey()).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
@@ -42,7 +43,9 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
         
-        return DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+        PersonVO vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
+        return vo;
     }
 
     public void delete(Long id) {
@@ -55,7 +58,19 @@ public class PersonServices {
     public List<PersonVO> findAll() {
         logger.info("Finding all peaple");
         //no retorno já estamos fazendo a converção da classe Person para PersonVO
-        return DozerMapper.parseListObject(repository.findAll(), PersonVO.class);
+        List<PersonVO> persons = DozerMapper.parseListObject(repository.findAll(), PersonVO.class);
+        persons
+            .stream()
+            .forEach(
+                p -> {
+                    try {
+                        p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            );
+        return persons;
     }
 
     public PersonVO findById(Long id) throws Exception {
