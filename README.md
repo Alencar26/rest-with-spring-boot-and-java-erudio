@@ -30,3 +30,6 @@
     - Suporte a XML e YAML
     - Controle via QueryParam
     - Controle via HeaderParam
+- [feature/HATEOAS](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/feature/HATEOAS/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)
+    - Implementação de HATEOAS para gerar link no response da request.
+    
