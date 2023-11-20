@@ -1,7 +1,5 @@
-# Content Negociation
+# HATEOAS
 
-### Nessa API nós conseguimos velidar os seguintes conceitos:
-- Suporte a XML
-- Suporte a yaml
-- Cntrole de extenção via QueryParam e anotation @Configuration
-- Controle via HeaderParam - URL mais limpa.
+### Nessa branch nós conseguimos validar os seguntes conceitos:
+- HATEOAS - geração de link no response da aplicação que aponta para si mesmo ou para outro endpoint.
+- JsonProperty - Ordenação dos elementos no response e alteração na nomenclatura dos mesmos.
