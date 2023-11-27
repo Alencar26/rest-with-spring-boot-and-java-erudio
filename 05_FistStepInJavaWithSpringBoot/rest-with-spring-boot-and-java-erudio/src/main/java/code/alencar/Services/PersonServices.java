@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import code.alencar.Controllers.PersonController;
 import code.alencar.data.vo.v1.PersonVO;
+import code.alencar.exceptions.RequiredObjectIsNullException;
 import code.alencar.exceptions.ResourceNotFoundException;
 import code.alencar.mapper.DozerMapper;
 import code.alencar.model.Person;
@@ -26,6 +27,7 @@ public class PersonServices {
     PersonRepository repository;
 
     public PersonVO create(PersonVO personVO) throws Exception {
+        if (personVO == null) throw new RequiredObjectIsNullException();
         logger.info("Create One Person.");
         Person person = DozerMapper.parseObject(personVO, Person.class);
         PersonVO vo = DozerMapper.parseObject(repository.save(person), PersonVO.class);
@@ -34,6 +36,7 @@ public class PersonServices {
     }
 
     public PersonVO update(PersonVO person) throws Exception {
+        if (person == null) throw new RequiredObjectIsNullException();
         logger.info("Update Person.");
         Person entity = repository.findById(person.getKey()).orElseThrow(
             () -> new ResourceNotFoundException("No records found for this ID."));
