@@ -32,4 +32,6 @@
     - Controle via HeaderParam
 - [feature/HATEOAS](https://github.com/Alencar26/rest-with-spring-boot-and-java-erudio/tree/feature/HATEOAS/05_FistStepInJavaWithSpringBoot/rest-with-spring-boot-and-java-erudio)
     - Implementação de HATEOAS para gerar link no response da request.
-    
+    - Mockito - Cobertura de testes automatizados para validar a geração dos Link.
+    - JsonProperty - Ordenação dos elementos no response e alteração na nomenclatura dos mesmos.
+    - Add nova Custom Exception
